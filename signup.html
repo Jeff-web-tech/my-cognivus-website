@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognivus | Sign Up</title>
+    <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="images/Cognivus.jpg" alt="Cognivus logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="exam.html">Generate Exam</a></li>
+                <li><a href="signup.html" class="active">Sign Up</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="auth-panel fade-in">
+            <div class="auth-card">
+                <h2>Create your Cognivus account</h2>
+                <P class="muted">
+                    Join for free - start generating world - class exams and track progress.
+                </P>
+                <form id="signup-form" novalidate>
+                    <label for="fullName">Full name</label>
+                    <input id="fullName" name="fullName" type="text" required placeholder="Jeffery Anyimah">
+
+                    <label for="email">Email address</label>
+                    <input id="email" name="email" type="email" required placeholder="me@example.com">
+
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" required placeholder="At least 8 characters">
+
+                    <label for="confirmPassword">Confirm password</label>
+                    <input id="confirmPassword" name="confirmPassword" type="password" required placeholder="Repeat password">
+
+                    <div id="signup-error" class="form-error" aria-live="polite"></div>
+
+                    <button type="submit" class="btn btn-primary full-width">
+                        Sign Up - It's free
+                    </button>
+
+                    <p class="small">Already have an account? <a href="signin.html">Sign in</a></p>
+                </form>
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Cognivus. All rights reserved</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

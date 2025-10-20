@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognivus | Generate Exam</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+
+            <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="exam.html" class="active">Generate Exam</a></li>
+                <li><a href="#">Subjects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+     <!-- Exam Generator Section -->
+    <section class="exam-generator fade-in">
+        <h1>Generate Your Exam</h1>
+        <p>Select your preferences and let Cognivus create a custom quiz for you.</p>
+
+        <form class="exam-form" action="quiz.html" method="GET">
+            <!-- Subject -->
+            <label for="subject">
+                Choose Subject:
+            </label>
+            <select id="subject" name="subject" required>
+                <option value="">-- Select Subject --</option>
+                <option value="math">Mathematics</option>
+                <option value="statistics">Statistics</option>
+                <option value="cs">Computer Science</option>
+            </select>
+
+            <!-- Difficulty -->
+            <label for="difficulty">
+                Difficulty:
+            </label>
+            <select id="difficulty" name="difficulty" required>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+
+            <!-- Number of Questions-->
+            <label for="num-questions">
+                Number of Questions:
+            </label>
+            <input type="number" id="num-questions" name="num-questions" min="1" max="50" value="10" required>
+
+            <!-- Button --> 
+            <button type="submit" class="btn btn-primary">Generate Exam</button>
+        </form>
+      </section>
+
+    <!-- Footer -->  
+    <footer>
+        <p>© 2025 Cognivus. All rights reserved.</p>
+    </footer> 
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognivus | Sign In</title>
+    <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="exam.html">Generate Exam</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="signin.html" class="active">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="auth-panel fade-in">
+            <div class="auth-card">
+                <h2>Welcome back</h2>
+                <p class="muted">Sign in to access your quizzes and progress.</p>
+
+                <form id="signin-form" novalidate>
+                    <label for="loginEmail">Email</label>
+                    <input id="loginEmail" name="loginEmail" type="email" required placeholder="me@example.com">
+
+                    <label for="loginPassword">Password</label>
+                    <input id="loginPassword" name="loginPassword" type="password" required placeholder="Your password">
+
+                    <div id="signin-error" class="form-error" aria-live="polite"></div>
+
+                    <button type="submit" class="btn btn-primary full-width">Sign In</button>
+
+                    <p class="small">New? <a href="signup.html">Create an account</a></p>
+                </form>
+            </div>
+        </section>    
+    </main>
+
+    <footer>
+        <p> © 2025 Cognivus. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
