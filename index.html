@@ -1,94 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
-    <link rel="stylesheet" href="style.css">
-    <title>Cognivus | Engineering the Mind's Frontier</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cognivus | Engineering the Mind’s Frontier</title>
+  <link icon="images/Cognivus.jpg">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="navbar">
-            <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="exam.html">Generate Exam</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo" />
+        <span class="brand-name">Cognivus</span>
+      </div>
 
-    <!-- Hero -->
-     <section class="hero">
-        <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="hero-logo">
-        <h1>Cognivus</h1>
-        <h2 class="slogan typewriter">
-            Engineering the Mind's Frontier
-        </h2>
-        <p>
-            AI-powered platform for creating, practicing, and mastering world-class tests.
-        </p>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="exam.html">Generate Exam</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+      </ul>
 
-        <a href="signup.html" class="btn btn-primary cta-link">
-            Get Started Free
-        </a>
+      
+      <div class="menu-toggle" id="menuToggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
 
-        <a href="signup.html" class="btn btn-primary cta-link">
-            Try Demo Quiz
-        </a>
-     </section>
+  <section class="hero">
+    <div class="hero-content fade-in">
+      <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="hero-logo" />
+      <h1>Cognivus</h1>
+      <h2 class="slogan">Engineering the Mind’s Frontier</h2>
+      <p>
+        AI-powered platform for creating, practicing, and mastering world-class tests
+        in <b>Mathematics, Statistics</b> and <b>Computer Science</b>.
+      </p>
 
-     <!-- Features -->
-      <section class="features fade-in">
-        <h2>Why Choose Cognivus?</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                Instant Exam Generation
-            </div>
-            <div class="feature-card">
-                Adaptive Difficulty
-            </div>
-            <div class="feature-card">
-                Detailed Analytics
-            </div>
-        </div>
-      </section>
+      <div class="hero-buttons">
+        <a href="signup.html" class="btn btn-primary">Get Started Free</a>
+        <a href="exam.html" class="btn btn-secondary">Try Demo Quiz</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Subjects -->
-     <section class="how fade-in">
-        <h2>Subjects We Cover</h2>
-       <ul>
-        <li>Mathematics</li>
-        <li>Statistics</li>
-        <li>Computer Science</li>
-       </ul>
-     </section>
+    <section class="features">
+    <h2 class="reveal">Why Choose Cognivus?</h2>
+    <div class="feature-container">
+      <div class="feature-box reveal">
+        <h3>🧠 Smart Exam Generator</h3>
+        <p>Instantly create quizzes and tests tailored to your learning goals.</p>
+      </div>
 
-    <!-- How it works -->
-     <section class="how fade-in">
-        <h2>How It Works</h2>
-        <p>Choose a subject ➡️ Generate a quiz ➡️ Practice ➡️ Get insights into your strengths and weaknesses.</p>
-     </section>
+      <div class="feature-box reveal">
+        <h3>📊 Advanced Analytics</h3>
+        <p>Track your progress, identify weak areas, and improve faster.</p>
+      </div>
 
-    <!-- Call to action -->
-     <section class="cta fade-in">
-        <h2>Start Your Learning Journey</h2>
-        <button class=" cta-btn" onclick="location.href='signup.html'">
-            Sign Up Free
-        </button>
-     </section>
+      <div class="feature-box reveal">
+        <h3>💻 Multi-Discipline Support</h3>
+        <p>Covering Math, Statistics, and Computer Science with precision.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>
-            © 2025 Cognivus. All rights reserved.
-        </p>
-    </footer>
+  <footer>
+    <p>© 2025 Cognivus. All rights reserved. | Engineering the Mind’s Frontier.</p>
+  </footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
