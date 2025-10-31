@@ -8,62 +8,71 @@
     <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Header -->
     <header>
         <nav class="navbar">
-
-            <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo">
+            <div class="brand">
+                <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo">
+                <span class="brand-name">Cognivus</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="exam.html" class="active">Generate Exam</a></li>
-                <li><a href="#">Subjects</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="signin.html">Sign In</a></li>
             </ul>
-
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </nav>
     </header>
 
-     <!-- Exam Generator Section -->
-    <section class="exam-generator fade-in">
-        <h1>Generate Your Exam</h1>
-        <p>Select your preferences and let Cognivus create a custom quiz for you.</p>
+    <!-- Exam Section -->
+    <section class="exam-section">
+        <div class="exam-container">
+            <h1>Generate Your Exam</h1>
+            <p>Select your preferred subject, difficulty level, and number of questions.
+                Let Cognivus prepare your exam instantly.
+            </p>
 
-        <form class="exam-form" action="quiz.html" method="GET">
-            <!-- Subject -->
-            <label for="subject">
-                Choose Subject:
-            </label>
-            <select id="subject" name="subject" required>
-                <option value="">-- Select Subject --</option>
-                <option value="math">Mathematics</option>
-                <option value="statistics">Statistics</option>
-                <option value="cs">Computer Science</option>
-            </select>
+            <form id="exam-form" class="exam-form">
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="statistics">Statistics</option>
+                        <option value="computer_science">Computer Science</option>
+                    </select>
+                </div>
 
-            <!-- Difficulty -->
-            <label for="difficulty">
-                Difficulty:
-            </label>
-            <select id="difficulty" name="difficulty" required>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
+                <div class="form-group">
+                    <label for="difficulty">Difficulty</label>
+                    <select id="difficulty" name="difficulty" required>
+                        <option value="">Select difficulty</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
 
-            <!-- Number of Questions-->
-            <label for="num-questions">
-                Number of Questions:
-            </label>
-            <input type="number" id="num-questions" name="num-questions" min="1" max="50" value="10" required>
+                <div class="form-group">
+                    <label for="questions">Number of Questions</label>
+                    <input type="number" id="questions" name="questions" placeholder="e.g., 10" min="1" max="100" required>
+                </div>
 
-            <!-- Button --> 
-            <button type="submit" class="btn btn-primary">Generate Exam</button>
-        </form>
-      </section>
-
+                <button type="submit" class="btn btn-primary">
+                    <a href="quiz.html">Generate Exam</a>
+                </button>
+            </form>
+        </div>
+    </section>
     <!-- Footer -->  
     <footer>
-        <p>© 2025 Cognivus. All rights reserved.</p>
+        <p>© 2025 Cognivus | Engineering the Mind’s Frontier</p>
     </footer> 
 
     <script src="script.js"></script>

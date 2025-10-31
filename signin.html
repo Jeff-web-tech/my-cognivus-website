@@ -20,28 +20,27 @@
         </nav>
     </header>
 
-    <main>
-        <section class="auth-panel fade-in">
-            <div class="auth-card">
-                <h2>Welcome back</h2>
-                <p class="muted">Sign in to access your quizzes and progress.</p>
+    <div class="signin-wrapper">
+        <div class="signin-container">
+            <h1>Welcome back</h1>
+            <p>Sign in to access your quizzes and progress.</p>
 
-                <form id="signin-form" novalidate>
-                    <label for="loginEmail">Email</label>
-                    <input id="loginEmail" name="loginEmail" type="email" required placeholder="me@example.com">
+            <form action="index.html" method="post">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input id="email"  type="email" required placeholder="Enter your email">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input id="password"  type="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit">Sign In</button>
 
-                    <label for="loginPassword">Password</label>
-                    <input id="loginPassword" name="loginPassword" type="password" required placeholder="Your password">
-
-                    <div id="signin-error" class="form-error" aria-live="polite"></div>
-
-                    <button type="submit" class="btn btn-primary full-width">Sign In</button>
-
-                    <p class="small">New? <a href="signup.html">Create an account</a></p>
-                </form>
-            </div>
-        </section>    
-    </main>
+                <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+            </form>
+        </div>
+    </div>    
+    
 
     <footer>
         <p> © 2025 Cognivus. All rights reserved.</p>
