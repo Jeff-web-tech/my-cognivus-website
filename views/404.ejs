@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognivus | Page Not Found</title>
+  <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .error-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 90px);
+      flex-direction: column;
+      text-align: center;
+      background: linear-gradient(135deg, #000814, #001d3d, #003566);
+    }
+
+    .error-code {
+      font-size: 8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00f5d4, #00aaff, #b5179e);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .error-title {
+      font-size: 2rem;
+      color: #fff;
+      margin: 20px 0;
+    }
+
+    .error-message {
+      font-size: 1.1rem;
+      color: #d0d0d0;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .error-actions a {
+      padding: 12px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-home {
+      background: linear-gradient(135deg, #00f5d4, #00aaff);
+      color: #001d3d;
+    }
+
+    .btn-home:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 20px rgba(0, 245, 212, 0.3);
+    }
+
+    .btn-back {
+      background: rgba(0, 245, 212, 0.1);
+      color: #00f5d4;
+      border: 2px solid #00f5d4;
+    }
+
+    .btn-back:hover {
+      background: #00f5d4;
+      color: #001d3d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo">
+        <span class="brand-name">Cognivus</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/exam">Generate Exam</a></li>
+        <li><a href="/quiz">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="error-container">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Page Not Found</h2>
+    <p class="error-message">
+      Sorry, the page you're looking for doesn't exist or has been moved. 
+      The path "<%= path %>" is not available.
+    </p>
+    <div class="error-actions">
+      <a href="/" class="btn-home">🏠 Go to Home</a>
+      <a href="javascript:history.back()" class="btn-back">← Go Back</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Cognivus. All rights reserved</p>
+  </footer>
+</body>
+</html>

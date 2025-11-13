@@ -48,9 +48,11 @@
                         <option value="computer_science">Computer Science</option>
                     </select>
 
-                    <div class="sub-subject-container">
-                        <label for="subSubject">Courses:</label>
-                        <select class="subSubject"></select>
+                    <div id="course-container" style="display: none; margin-top: 15px;">
+                        <label for="course">Choose course:</label>
+                        <select id="course">
+                            <option value="">-- Select Course --</option>
+                        </select>
                     </div>
                 </div>
 
@@ -72,7 +74,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">
-                    <a href="/quiz">Generate Exam</a>
+                    Generate Exam
                 </button>
             </form>
         </div>
