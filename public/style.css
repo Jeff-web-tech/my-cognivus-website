@@ -508,7 +508,7 @@ footer {
 .signup-form input {
   width: 100px;
   padding: 10px;
-  min-width: 300px;
+  max-width: 100px;
   margin-bottom: 20px;
   border: none;
   border-radius: 10px;
