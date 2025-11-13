@@ -13,6 +13,7 @@ body {
   color: #fff;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  padding-top: 90px;
 }
 
 /* --------------------------
@@ -392,6 +393,17 @@ footer {
   .menu-toggle {
     display: block;
   }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+  padding: 10px 20px;
+  backdrop-filter: blur(10px);
+}
+
  .nav-links {
     position: absolute;
     right: 20px;
@@ -410,9 +422,7 @@ footer {
   }
 }  
 
-.navbar {
-  padding: 10px 20px;
-}
+
 
 
   .logo {
