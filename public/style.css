@@ -473,6 +473,7 @@ footer {
   animation: fadeUp 1s ease;
 }
 
+
 .signup-container h1 {
   font-size: 2rem;
   color: #00e0ff;
@@ -508,7 +509,8 @@ footer {
 .signup-form input {
   width: 100px;
   padding: 10px;
-  max-width: 100px;
+  height: auto;
+  min-width: 250px;
   margin-bottom: 20px;
   border: none;
   border-radius: 10px;
@@ -517,6 +519,7 @@ footer {
   outline: none;
   font-size: 1rem;
 }
+
 
 .signup-form input:focus {
   border: 1px solid #00f5d4;
