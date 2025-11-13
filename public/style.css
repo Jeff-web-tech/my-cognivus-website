@@ -518,6 +518,25 @@ footer {
   color: #fff;
   outline: none;
   font-size: 1rem;
+  padding-right: 45px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+  user-select: none;
+  font-size: 20px;
+  color: #aaa;
+}
+
+@media (max-width: 500px) {
+  .eye-icon {
+    right: 10px;
+    font-size: 22px;
+  }
 }
 
 

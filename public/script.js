@@ -32,6 +32,13 @@ form.addEventListener("submit", (e) => {
     window.location.href = "/quiz";
 });
 
+const passwordInput = document.getElementById('password');
+const togglePassword = document.getElementById('tooglePassword');
+togglePassword.addEventListener('click', () => {
+  const type = passwordInput.type === 'password' ? 'text' : 'password';
+  passwordInput.type = type;
+});
+
 const subjectSelect = document.getElementById('subject');
 const subContainer = document.getElementById('sub-subject-container');
 const subSelect = document.getElementById('subSubject');
