@@ -393,26 +393,23 @@ footer {
     padding: 10px 25px;
   }
  .nav-links {
-    position: fixed;
-    right: -100%;
+    position: absolute;
+    right: 20px;
+    gap: 12px;
     top: 70px;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
-    width: 220px;
-    height: 100vh;
     text-align: center;
-    padding: 10px 0;
+    border-radius: 10px;
+    padding: 15px 20px;
+    z-index: 999;
     justify-content: center;
     align-items: center;
     transition: right 0.4s ease;
   }
 }  
 
-  nav ul.nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+
 
   .logo {
     width: 45px;
@@ -520,6 +517,7 @@ footer {
   font-size: 1rem;
   padding-right: 45px;
 }
+
 
 
 
