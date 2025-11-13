@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognivus | Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="/index">Home</a></li>
+                <li><a href="/exam">Generate Exam</a></li>
+                <li><a href="/quiz" class="active">Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Quiz Section -->
+    <section class="quiz-container fade-in">
+        <h1 id="quiz-title">Your Quiz</h1>
+        <div id="quiz-box">
+            <p id="question"></p>
+            <ul id="options"></ul>
+            <div class="quiz-controls">
+                <button id="prev-btn" class="btn btn-secondary">
+                    Previous
+                </button>
+                <button id="next-btn" class="btn btn-primary">
+                    Next
+                </button>
+                <button id="submit-btn" class="btn btn-primary">
+                    Submit
+                </button>
+            </div>
+        </div>
+        <div id="result" class="fade-in"></div>
+    </section>
+
+    <footer>
+        <p>© 2025 Cognivus. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
