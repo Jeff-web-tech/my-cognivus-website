@@ -7,55 +7,102 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background: #01020a;
   color: #fff;
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  padding-top: 90px;
+  padding-top: 70px;
 }
 
 /* --------------------------
-   NAVBAR
+   NAVBAR - MOBILE FIRST
 ---------------------------*/
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(4, 10, 30, 0.85);
+  background: rgba(4, 10, 30, 0.95);
   backdrop-filter: blur(15px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px;
+  padding: 12px 16px;
   z-index: 1000;
   box-shadow: 0 4px 30px rgba(0, 255, 255, 0.05);
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
+
 .brand-name {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   background: linear-gradient(90deg, #00f5d4, #00aaff, #b5179e);
   -webkit-background-clip: text;
   color: transparent;
   letter-spacing: 1px;
+  display: none;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  user-select: none;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .nav-links {
   list-style: none;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.98);
+  padding: 20px;
+  gap: 15px;
+  animation: slideDown 0.3s ease;
+}
+
+.nav-links.active {
   display: flex;
-  gap: 30px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .nav-links a {
@@ -64,7 +111,9 @@ body {
   font-weight: 500;
   transition: 0.3s;
   position: relative;
+  padding: 10px 0;
 }
+
 .nav-links a:hover,
 .nav-links a.active {
   color: #00f5d4;
@@ -77,12 +126,773 @@ body {
   height: 2px;
   background: #00f5d4;
   left: 0;
-  bottom: -5px;
+  bottom: 0;
   transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+/* Desktop navbar */
+@media (min-width: 768px) {
+  .navbar {
+    padding: 15px 50px;
+  }
+
+  .brand-name {
+    display: inline;
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    background: transparent;
+    padding: 0;
+    top: auto;
+    animation: none;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* --------------------------
+   HERO SECTION - MOBILE FIRST
+---------------------------*/
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #051937, #001233, #000814);
+  background-size: 400% 400%;
+  animation: gradientBreath 15s ease infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 60px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes gradientBreath {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.12) 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+  filter: blur(80px);
+  animation: glowPulse 10s infinite alternate;
+  z-index: 0;
+}
+
+@keyframes glowPulse {
+  from {
+    transform: scale(1) translateY(0);
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(1.1) translateY(15px);
+    opacity: 0.6;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 100%;
+}
+
+.hero-logo {
+  width: 80px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 25px rgba(0, 255, 255, 0.3));
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00f5d4, #00aaff, #b5179e);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.hero .slogan {
+  font-size: 1.1rem;
+  color: #b5b5b5;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 0.95rem;
+  max-width: 90%;
+  margin: 0 auto 25px;
+  color: #d0d0d0;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #00f5d4, #00aaff);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #00aaff, #00f5d4);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 2px solid #00f5d4;
+  color: #00f5d4;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: #00f5d4;
+  color: #000;
+}
+
+/* Desktop hero */
+@media (min-width: 768px) {
+  .hero {
+    padding: 120px 20px;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero .slogan {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    max-width: 600px;
+  }
+
+  .hero-logo {
+    width: 120px;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    max-width: none;
+  }
+
+  .btn {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+
+  .hero::before {
+    width: 900px;
+    height: 900px;
+  }
+}
+
+/* --------------------------
+   FEATURES SECTION
+---------------------------*/
+.features {
+  padding: 80px 16px;
+  background: linear-gradient(135deg, #010d26, #001845, #001233);
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #00f5d4;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.feature-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 0;
+}
+
+.feature-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px 20px;
+  transition: 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  background: rgba(0, 255, 255, 0.07);
+  box-shadow: 0 10px 40px rgba(0, 255, 255, 0.15);
+}
+
+.feature-box h3 {
+  color: #00f5d4;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.feature-box p {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .features {
+    padding: 120px 20px;
+  }
+
+  .features h2 {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+  }
+
+  .feature-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 0 50px;
+  }
+
+  .feature-box {
+    padding: 40px 25px;
+  }
+
+  .feature-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .feature-box p {
+    font-size: 0.95rem;
+  }
+}
+
+/* --------------------------
+   EXAM SECTION - MOBILE FIRST
+---------------------------*/
+.exam-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #000814, #001d3d, #003566);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  padding: 60px 16px;
+  box-sizing: border-box;
+}
+
+.exam-container {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+  animation: fadeUp 1s ease;
+}
+
+.exam-container h1 {
+  background: linear-gradient(90deg, #00f5d4, #00aaff);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.exam-container p {
+  color: #bbb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.exam-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  color: #00f5d4;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  font-size: 0.95rem;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  border: 1px solid #00f5d4;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#course-container {
+  margin-top: 15px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .exam-section {
+    padding: 100px 20px;
+  }
+
+  .exam-container {
+    padding: 40px 50px;
+  }
+
+  .exam-container h1 {
+    font-size: 2rem;
+  }
+
+  .exam-container p {
+    font-size: 0.95rem;
+  }
+
+  .form-group select,
+  .form-group input {
+    padding: 12px 14px;
+    font-size: 1rem;
+  }
+}
+
+/* --------------------------
+   SIGNUP SECTION - MOBILE FIRST
+---------------------------*/
+.signup-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000814, #001d3d, #003566);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  padding: 60px 16px;
+  box-sizing: border-box;
+}
+
+.signup-container {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+  text-align: center;
+  animation: fadeUp 1s ease;
+}
+
+.signup-container h1 {
+  font-size: 1.5rem;
+  color: #00e0ff;
+  margin-bottom: 10px;
+}
+
+.signup-container p {
+  color: #ccc;
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+}
+
+.signup-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signup-form .form-group {
+  text-align: left;
+}
+
+.signup-form label {
+  color: #00e0ff;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  font-size: 0.9rem;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.signup-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.signup-form input:focus {
+  border: 1px solid #00f5d4;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #00e0ff, #0077ff);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 11px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.signin-link {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.signin-link a {
+  color: #00f5d4;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signin-link a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 480px) {
+  .signup-container {
+    padding: 30px 30px;
+  }
+
+  .signup-container h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .signup-section {
+    padding: 80px 20px;
+  }
+
+  .signup-container {
+    max-width: 420px;
+    padding: 40px;
+  }
+
+  .signup-container h1 {
+    font-size: 2rem;
+  }
+
+  .signup-form input {
+    padding: 12px;
+  }
+}
+
+/* --------------------------
+   SIGNIN SECTION - MOBILE FIRST
+---------------------------*/
+.signin-wrapper {
+  min-height: 100vh;
+  padding: 60px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(115deg, rgba(0, 255, 255, 0.15), rgba(0, 150, 255, 0.1), rgba(0, 0, 0, 0.9));
+  backdrop-filter: blur(20px);
+}
+
+.signin-container {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: fadeIn 0.8s ease-in-out;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  padding: 25px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+.signin-container h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #00f5ff;
+  margin-bottom: 10px;
+}
+
+.signin-container p {
+  color: #b9b9b9;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  color: #00e0ff;
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.input-group input {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+.input-group input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px #00e0ff;
+}
+
+button {
+  background: linear-gradient(90deg, #00f5ff, #007bff);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #007bff, #00f5ff);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.signup-link {
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.signup-link a {
+  color: #00e0ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.signup-link a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 480px) {
+  .signin-container {
+    padding: 30px;
+  }
+
+  .signin-container h1 {
+    font-size: 1.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .signin-wrapper {
+    padding: 80px 20px;
+  }
+
+  .signin-container {
+    max-width: 420px;
+    padding: 35px;
+  }
+
+  .signin-container h1 {
+    font-size: 2.2rem;
+  }
+
+  .input-group input {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
+
+/* --------------------------
+   ERROR MESSAGE
+---------------------------*/
+.error-message {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 3px solid #ff6b6b;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* --------------------------
+   FOOTER
+---------------------------*/
+footer {
+  text-align: center;
+  padding: 30px 16px;
+  background: #000814;
+  color: #777;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+@media (min-width: 768px) {
+  footer {
+    padding: 40px;
+    font-size: 0.9rem;
+  }
 }
 
 /* EXAM PAGE */
