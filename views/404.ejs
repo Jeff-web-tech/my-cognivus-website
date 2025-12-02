@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cognivus | Page Not Found</title>
   <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     .error-container {
@@ -88,6 +89,13 @@
         <li><a href="/">Home</a></li>
         <li><a href="/exam">Generate Exam</a></li>
         <li><a href="/quiz">Quiz</a></li>
+        <% if (user) { %>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/logout">Logout</a></li>
+        <% } else { %>
+          <li><a href="/signup">Sign Up</a></li>
+          <li><a href="/login">Sign In</a></li>
+        <% } %>
       </ul>
     </nav>
   </header>
@@ -106,7 +114,7 @@
   </div>
 
   <footer>
-    <p>© 2025 Cognivus. All rights reserved</p>
+    <p>© <%= new Date().getFullYear() %> Cognivus. All rights reserved</p>
   </footer>
 </body>
 </html>

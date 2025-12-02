@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cognivus | Engineering the Mind’s Frontier</title>
   <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -20,8 +21,13 @@
         <li><a href="/" class="active">Home</a></li>
         <li><a href="/exam">Generate Exam</a></li>
         <li><a href="/quiz">Quiz</a></li>
-        <li><a href="/signup">Sign Up</a></li>
-        <li><a href="/login">Sign In</a></li>
+        <% if (user) { %>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/logout">Logout</a></li>
+        <% } else { %>
+          <li><a href="/signup">Sign Up</a></li>
+          <li><a href="/login">Sign In</a></li>
+        <% } %>
       </ul>
 
       
@@ -71,7 +77,7 @@
   </section>
 
   <footer>
-    <p>© 2025 Cognivus. All rights reserved. | Engineering the Mind’s Frontier.</p>
+    <p>© <%= new Date().getFullYear() %> Cognivus. All rights reserved. | Engineering the Mind’s Frontier.</p>
   </footer>
 
 <script src="script.js"></script>

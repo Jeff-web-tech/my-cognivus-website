@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cognivus | Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpg" href="images/Cognivus.jpg">
 </head>
@@ -13,9 +14,16 @@
         <nav class="navbar">
             <img src="images/Cognivus.jpg" alt="Cognivus Logo" class="logo">
             <ul class="nav-links">
-                <li><a href="/index">Home</a></li>
-                <li><a href="/exam">Generate Exam</a></li>
-                <li><a href="/quiz" class="active">Quiz</a></li>
+                                <li><a href="/index">Home</a></li>
+                                <li><a href="/exam">Generate Exam</a></li>
+                                <li><a href="/quiz" class="active">Quiz</a></li>
+                                <% if (user) { %>
+                                    <li><a href="/dashboard">Dashboard</a></li>
+                                    <li><a href="/logout">Logout</a></li>
+                                <% } else { %>
+                                    <li><a href="/signup">Sign Up</a></li>
+                                    <li><a href="/login">Sign In</a></li>
+                                <% } %>
             </ul>
 
             <div class="menu-toggle" id="menu-toggle">
@@ -32,6 +40,9 @@
         <div id="quiz-box">
             <p id="question"></p>
             <ul id="options"></ul>
+            <div id="demo-error" class="error-message" style="display:none;">
+                Demo mode allows up to 5 questions. Sign up to access the full quiz.
+            </div>
             <div class="quiz-controls">
                 <button id="prev-btn" class="btn btn-secondary">
                     Previous
@@ -48,9 +59,68 @@
     </section>
 
     <footer>
-        <p>© 2025 Cognivus. All rights reserved.</p>
+        <p>© <%= new Date().getFullYear() %> Cognivus. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+        <script>
+            // Demo question limit enforcement for non-logged-in users
+            (function () {
+                const isLoggedIn = <%= user ? 'true' : 'false' %>;
+                if (isLoggedIn) return; // no demo limit for logged-in users
+
+                const MAX_DEMO = 5;
+                let currentIndex = 1; // 1-based
+
+                const demoError = document.getElementById('demo-error');
+                const nextBtn = document.getElementById('next-btn');
+                const prevBtn = document.getElementById('prev-btn');
+                const submitBtn = document.getElementById('submit-btn');
+
+                function showDemoError() {
+                    if (demoError) {
+                        demoError.style.display = 'block';
+                        setTimeout(() => { demoError.style.opacity = '1'; }, 10);
+                    }
+                }
+
+                function hideDemoError() {
+                    if (demoError) {
+                        demoError.style.display = 'none';
+                        demoError.style.opacity = '';
+                    }
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', function (e) {
+                        // assume clicking Next would move to next question
+                        if (currentIndex >= MAX_DEMO) {
+                            e.preventDefault();
+                            showDemoError();
+                            return;
+                        }
+                        currentIndex += 1;
+                        hideDemoError();
+                    });
+                }
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', function () {
+                        if (currentIndex > 1) currentIndex -= 1;
+                        hideDemoError();
+                    });
+                }
+
+                if (submitBtn) {
+                    submitBtn.addEventListener('click', function (e) {
+                        // If they try to submit beyond demo limit, block and show message
+                        if (currentIndex > MAX_DEMO) {
+                            e.preventDefault();
+                            showDemoError();
+                        }
+                    });
+                }
+            })();
+        </script>
+        <script src="script.js"></script>
 </body>
 </html>

@@ -24,6 +24,12 @@ app.use(session({
   cookie: { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } // 24 hours
 }));
 
+// Make current user available in all templates
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 // Connect to MongoDB
 mongoose.connect("mongodb://127.0.0.1:27017/cognivus", { 
   useNewUrlParser: true, 
@@ -120,7 +126,8 @@ app.post("/login", async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ email: email.toLowerCase() });
+    // Include password explicitly (schema sets password select: false)
+    const user = await User.findOne({ email: email.toLowerCase() }).select('+password');
     if (!user) {
       return res.render("login", { error: "Invalid email or password" });
     }
@@ -131,11 +138,21 @@ app.post("/login", async (req, res) => {
       return res.render("login", { error: "Invalid email or password" });
     }
 
-    // Set session user
-    req.session.user = { 
-      id: user._id, 
-      email: user.email, 
-      fullname: user.fullname 
+    // Update lastLogin timestamp (non-sensitive write)
+    try {
+      user.lastLogin = new Date();
+      // Save without returning the password
+      await user.save();
+    } catch (e) {
+      // Non-fatal — don't block login if lastLogin can't be saved
+      console.warn('Unable to update lastLogin:', e);
+    }
+
+    // Set session user (do not include password)
+    req.session.user = {
+      id: user._id,
+      email: user.email,
+      fullname: user.fullname
     };
 
     // Redirect to Dashboard
@@ -158,7 +175,8 @@ app.get("/exam", (req, res) => {
 
 // Quiz page
 app.get("/quiz", (req, res) => {
-  res.render("quiz");
+  // Pass user to template so client-side can enforce demo limits
+  res.render("quiz", { user: req.session.user });
 });
 
 // Logout
